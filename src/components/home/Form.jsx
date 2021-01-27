@@ -2,26 +2,26 @@ import React from 'react'
 import useInput from '../../customHook/useInput'
 
 const Form = () => {
-    const [title,bindtitle,resetTitle] = useInput()
+    const [title,bindTitle,resetTitle] = useInput()
     const [content,bindContent,resetContent] = useInput()
 
     const handleOnSubmit = (ev)=>{
-        ev.preventDefault()
-        resetTitle()
+        ev.preventDefault()        
         resetContent()
+        resetTitle()
     }
     return (
         <div className='section'>
-            <form action='' className='white'>
-                <h5 className="grey_text">New-Note</h5>
+            <form onSubmit={handleOnSubmit} className='white'>
+                <h5 className="grey-text text-darken-3">New-Note</h5>
             
                 <div className="input-field">
-                <input  id="note-title" type="text" className="validate"{...bindtitle}/>
-                <label className="active" for="note-title">Note-Title</label>                 
+                <input  id="note-title" type="text" className="validate"{...bindTitle}/>
+                <label className="active" htmlFor="note-title">Note-Title</label>                 
                 </div>
                 <div className="input-field">                    
                 <textarea id="note-content" className="materialize-textarea"{...bindContent}></textarea>
-                <label for="note-content">Note-Content</label>                 
+                <label htmlFor="note-content">Note-Content</label>                 
                 </div>
 
                 <button className='btn green'>Add</button>
