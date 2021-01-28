@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {createStore,applyMiddleware,compose} from 'redux'
-import {Provider} from 'redux'
+import {Provider} from 'react-redux'
 import firebase from 'firebase/app'
 import thunk from 'redux-thunk'
 import rootReducer from './store/reducers/rootReducer'
@@ -14,8 +14,9 @@ import fbconfig from './config/fbconfig'
 
 
 const store = createStore(rootReducer,
-  compose(applyMiddleware(thunk.withExtraArgument({getFirebase,getFirestore}))),
+  compose(applyMiddleware(thunk.withExtraArgument({getFirebase,getFirestore})),
   reduxFirestore(fbconfig)
+  )  
   )
 
   const rrfProps = {

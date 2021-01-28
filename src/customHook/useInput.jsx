@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 const useInput = (initialvalue = '') => {
     const [value,setValue] = useState(initialvalue)
-        const reSet = ()=>{
+        const reset = ()=>{
             setValue(initialvalue)
             
         }
@@ -14,7 +14,8 @@ const useInput = (initialvalue = '') => {
              }   
         }
 
-        return [value,reSet,bind]
+        // must be in a order value->bind->reset
+        return [value,bind,reset]
 
     }
 
