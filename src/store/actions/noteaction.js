@@ -28,3 +28,19 @@ export const deleteNote = (note)=>{
         })
     }
 }
+
+export const toggleFav = (note)=>{
+    return (dispatch,getState,{getFirestore})=>{
+        const favStatus = !note.favorite
+        const firestore = getFirestore()
+        firestore.collection('notes').doc(note.id).update({
+            favorite:favStatus
+        })        
+        .then(()=>{
+            console.log('favorite updated')
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
+}

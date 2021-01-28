@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { deleteNote } from '../../store/actions/noteaction'
+import { deleteNote, toggleFav } from '../../store/actions/noteaction'
 
 
 
@@ -11,14 +11,20 @@ const Note = ({note}) => {
         dispatch(deleteNote(note))
     }
 
+    const toggleFavHandler = ()=>{
+        dispatch(toggleFav(note))
+    }
+
+    const favMarkup = note.favorite?'favorite':'favorite_border'
+
     return (
-        <div className='note blue'>
+        <div className='note white'>
             <div className='right-align'>
-                <i className='material-icons red-text' style={{cursor:'pointer'}}>favorite</i>
+                <i className='material-icons green-text' style={{cursor:'pointer'}} onClick={toggleFavHandler}>{favMarkup}</i>
                 <i className='material-icons' style={{cursor:'pointer'}} onClick={deleteHandler}>delete</i>
             </div> 
-            <h5 className='black-text'>{note.title}</h5>
-            <p className='truncate black-text'>{note.content}</p>
+            <h5 className='green-text'>{note.title}</h5>
+            <p className='truncate green-text'>{note.content}</p>
             <p className='black-text'>day ago</p>
             <div className='right-align'><i className="material-icons black-text">edit</i></div>
 
