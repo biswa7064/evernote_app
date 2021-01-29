@@ -17,6 +17,10 @@ const Note = ({note}) => {
         dispatch(toggleFav(note))
     }
 
+    const editNoteHandler = ()=>{
+        dispatch({type:'EDIT_NOTE',payload:note})
+    }
+
     const favMarkup = note.favorite?'favorite':'favorite_border'
 
     return (
@@ -32,7 +36,7 @@ const Note = ({note}) => {
             <p className='blue-grey-text' >{moment(note.createdAt.toDate()).fromNow()}</p>
             <div className='right-align'>
                 <Link to={`/editnote/${note.id}`}>
-                <i className="material-icons black-text">edit</i>
+                <i className="material-icons black-text" onClick={editNoteHandler}>edit</i>
                 </Link>
                 </div>
 
