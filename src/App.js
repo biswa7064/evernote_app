@@ -6,6 +6,7 @@ import './App.css';
 import Home from './components/home/Home';
 import Navbar from './components/layout/Navbar';
 import FavNote from './components/notes/FavNote';
+import Notedetail from './components/notes/Notedetail';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Switch>
         <Route exact path='/' component={Home}/>
         <Route exact path='/favorites' component={FavNote}/>
+        <Route exact path='/note/:id' component={Notedetail}/>
       </Switch>
     </Router>
     
