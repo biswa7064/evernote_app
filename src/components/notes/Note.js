@@ -1,3 +1,4 @@
+import moment from 'moment'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { deleteNote, toggleFav } from '../../store/actions/noteaction'
@@ -24,8 +25,8 @@ const Note = ({note}) => {
                 <i className='material-icons' style={{cursor:'pointer'}} onClick={deleteHandler}>delete</i>
             </div> 
             <h5 className='green-text'>{note.title}</h5>
-            <p className='truncate green-text'>{note.content}</p>
-            <p className='black-text'>day ago</p>
+            <p className='truncate green-text' style={{fontWeight:'bold'}}>{note.content}</p>
+            <p className='blue-grey-text' >{moment(note.createdAt.toDate()).fromNow()}</p>
             <div className='right-align'><i className="material-icons black-text">edit</i></div>
 
         </div>
